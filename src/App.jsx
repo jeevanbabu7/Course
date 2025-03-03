@@ -7,13 +7,33 @@ export default function App() {
     <ReactLenis root>
       <main>
         <article>
-          <section className="text-white  h-screen  w-full bg-slate-950  grid place-content-center sticky top-0">
-            <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+        <section className="text-white h-screen w-full bg-slate-950 grid place-content-center sticky top-0 relative">
+          <div 
+            className="absolute inset-0 bg-cover bg-center w-full h-full opacity-50" 
+            style={{ backgroundImage: "url('/hero.jpg')" }} // Replace with actual image path
+          ></div>
 
-            <h1 className="2xl:text-7xl text-6xl px-8 font-semibold text-center tracking-tight leading-[120%]">
-              I Know What Exactly you're <br /> Looking For! Scroll Please 👇
+          <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+
+          <div className="absolute inset-0 bg-black/50"></div> {/* Overlay for better text visibility */}
+
+          <div className="relative text-center px-8 max-w-4xl">
+            <h1 className="2xl:text-7xl text-5xl font-bold tracking-tight leading-[120%]">
+              Unlock Your Potential with ECE Courses at GCEK
             </h1>
-          </section>
+            <p className="mt-4 text-lg max-w-2xl mx-auto">
+              Enhance your skills with expertly designed courses from the Electronics and Communication Engineering 
+              Department of GCEK. Start your journey today!
+            </p>
+
+            {/* Price Details Section */}
+            <div className="mt-6 p-6 bg-white/10 backdrop-blur-sm rounded-xl inline-block">
+              <p className="mt-2 text-xl font-bold">Total price: ₹5999 (including GST)</p>
+            </div>
+          </div>
+        </section>
+
+
 
           <section className="bg-gray-300 text-black grid place-content-center h-screen sticky top-0 rounded-tr-2xl rounded-tl-2xl overflow-hidden w-full">
             <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
@@ -23,13 +43,26 @@ export default function App() {
             </h1> */}
             <Form />
           </section>
-          <section className="text-white  h-screen  w-full bg-slate-950  grid place-content-center sticky top-0">
+          <section className="text-white h-screen w-full bg-slate-950 grid place-content-center sticky top-0">
             <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
-            <h1 className="2xl:text-7xl text-5xl px-8 font-semibold text-center tracking-tight leading-[120%]">
-              Thanks To Scroll.
-              <br /> Now Scroll Up Again☝️🏿
-            </h1>
+            <div className="text-center px-8 z-50">
+              <h1 className="2xl:text-7xl text-5xl font-semibold tracking-tight leading-[120%]">
+                Enroll in ECE Courses at GCEK
+              </h1>
+              <p className="mt-4 text-lg max-w-2xl mx-auto">
+                Join our specialized courses offered by the ECE Department of GCEK and enhance your knowledge 
+                with expert-led curriculum. Register now to secure your spot!
+              </p>
+              <a
+                href="https://drive.google.com/file/d/13A8LDUqHpz5-s7mOyFc_nwj5St1vN6P7/view?usp=drive_link"
+                download
+                className="mt-6 inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition pointer"
+              >
+                Download Syllabus
+              </a>
+            </div>
           </section>
+
         </article>
       </main>
     </ReactLenis>
