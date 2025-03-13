@@ -19,16 +19,15 @@ export default function App() {
 
           <div className="relative text-center px-8 max-w-4xl">
             <h1 className="2xl:text-7xl text-5xl font-bold tracking-tight leading-[120%]">
-              Unlock Your Potential with ECE Courses at GCEK
+              Unlock Your Potential with IoT and Embedded system workshop
             </h1>
             <p className="mt-4 text-lg max-w-2xl mx-auto">
-              Enhance your skills with expertly designed courses from the Electronics and Communication Engineering 
-              Department of GCEK. Start your journey today!
+              Enhance your skills with expertly designed course from GCEK. Start your journey today!
             </p>
 
             {/* Price Details Section */}
             <div className="mt-6 p-6 bg-white/10 backdrop-blur-sm rounded-xl inline-block">
-              <p className="mt-2 text-xl font-bold">Total price: ₹5999 (including GST)</p>
+              <p className="mt-2 text-xl font-bold">Total price: ₹5000 + GST</p>
             </div>
           </div>
         </section>
@@ -47,19 +46,24 @@ export default function App() {
             <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
             <div className="text-center px-8 z-50">
               <h1 className="2xl:text-7xl text-5xl font-semibold tracking-tight leading-[120%]">
-                Enroll in ECE Courses at GCEK
+                Enroll in  IoT and Embedded system workshop
               </h1>
               <p className="mt-4 text-lg max-w-2xl mx-auto">
-                Join our specialized courses offered by the ECE Department of GCEK and enhance your knowledge 
+                Join our specialized courses offered by GCEK and enhance your knowledge 
                 with expert-led curriculum. Register now to secure your spot!
               </p>
               <a
-                href="https://drive.google.com/file/d/13A8LDUqHpz5-s7mOyFc_nwj5St1vN6P7/view?usp=drive_link"
+                href="https://drive.google.com/file/d/112WrCukPRbl3_zwXTTJF2OIJ5IUcIoOo/view?usp=sharing"
                 download
                 className="mt-6 inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition pointer"
               >
                 Download Syllabus
               </a>
+            </div>
+            <div className='pt-20' id="#contact">
+              <h2>Contact: </h2>
+              <p>arjuntc@gcek.ac.in</p>
+              <p>sagesh@gcek.ac.in</p>
             </div>
           </section>
 

@@ -4,11 +4,8 @@ import "react-toastify/dist/ReactToastify.css";
 import FormData from "form-data"; // form-data v4.0.1
 import Mailgun from "mailgun.js"; // mailgun.js v11.1.0
 import axios from "axios"; // axios v0.21.1
-import sgMail from "@sendgrid/mail"; 
-import emailjs from "emailjs-com";
 
 const Form = () => {
-
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -23,48 +20,48 @@ const Form = () => {
     }));
   };
 
-  // async function validateEmail(email) {
-  //   const apiKey = import.meta.env.VITE_MAILGUN_API_KEY ; // Replace with your Mailgun API key
-  //   const url = `https://api.mailgun.net/v4/address/validate?address=${email}`;
+  async function validateEmail(email) {
+    const apiKey = "d585e145a1ac0c609bd2177b23a9168f-3af52e3b-cfcba6fb"; // Replace with your Mailgun API key
+    const url = `https://api.mailgun.net/v4/address/validate?address=${email}`;
 
-  //   try {
-  //     const response = await axios.get(url, {
-  //       auth: {
-  //         username: "api",
-  //         password: apiKey,
-  //       },
-  //     });
-  //     return response.data.is_valid;
-  //   } catch (error) {
-  //     console.error("Error validating email:", error);
-  //     return false;
-  //   }
-  // }
+    try {
+      const response = await axios.get(url, {
+        auth: {
+          username: "api",
+          password: apiKey,
+        },
+      });
+      return response.data.is_valid;
+    } catch (error) {
+      console.error("Error validating email:", error);
+      return false;
+    }
+  }
 
-  // async function sendSimpleMessage(userEmail, userName) {
-  //   const mailgun = new Mailgun(FormData);
-  //   const mg = mailgun.client({
-  //     username: "api",
-  //     key: apikey,
-  //   });
+  async function sendSimpleMessage(userEmail, userName) {
+    const mailgun = new Mailgun(FormData);
+    const mg = mailgun.client({
+      username: "api",
+      key: "d585e145a1ac0c609bd2177b23a9168f-3af52e3b-cfcba6fb",
+    });
 
-  //   try {
-  //     const data = await mg.messages.create(
-  //       "sandbox73a6e97a44aa40a0b4e6704e9f767b91.mailgun.org",
-  //       {
-  //         from: "Mailgun Sandbox <postmaster@sandbox73a6e97a44aa40a0b4e6704e9f767b91.mailgun.org>",
-  //         to: userEmail, // Send email to the entered user email
-  //         subject: `Hello ${userName}`,
-  //         text: `Hi ${userName},\n\nThank you for registering for the course! We will get back to you soon.\n\nBest Regards,\nCourse Team`,
-  //       }
-  //     );
+    try {
+      const data = await mg.messages.create(
+        "sandbox73a6e97a44aa40a0b4e6704e9f767b91.mailgun.org",
+        {
+          from: "Mailgun Sandbox <postmaster@sandbox73a6e97a44aa40a0b4e6704e9f767b91.mailgun.org>",
+          to: userEmail, // Send email to the entered user email
+          subject: `Hello ${userName}`,
+          text: `Hi ${userName},\n\nThank you for registering for the course! We will get back to you soon.\n\nBest Regards,\nCourse Team`,
+        }
+      );
 
-  //     console.log("Email Sent:", data);
-  //     return data;
-  //   } catch (error) {
-  //     console.log("Error sending email:", error);
-  //   }
-  // }
+      console.log("Email Sent:", data);
+      return data;
+    } catch (error) {
+      console.log("Error sending email:", error);
+    }
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -74,30 +71,18 @@ const Form = () => {
       return;
     }
 
-    // const isEmailValid = await validateEmail(formData.email);
-    // if (!isEmailValid) {
-    //   toast.error("Invalid email address!", { position: "top-left" });
-    //   return;
-    // }
+    const isEmailValid = await validateEmail(formData.email);
+    if (!isEmailValid) {
+      toast.error("Invalid email address!", { position: "top-left" });
+      return;
+    }
 
     toast.success("Form submitted successfully!", { position: "top-left" });
 
     try {
-      const response = await emailjs.send(
-        "service_0ucc7pi",  // Replace with your EmailJS Service ID
-        "template_wdaz7b8", // Replace with your EmailJS Template ID
-        {
-          from_name: "Jeevan",
-          to_name: "test",
-          to_email: formData.email,
-          message: "Hello! This is a test email from my frontend app.",
-        },
-        "S0p9-eY2NRlT1ZAwC" // Replace with your EmailJS Public Key
-      );
-  
-      console.log("Email sent successfully:", response);
+      await sendSimpleMessage(formData.email, formData.name);
     } catch (error) {
-      console.error("Failed to send email:", error);
+      console.error("Error sending email:", error);
     }
 
     setFormData({
