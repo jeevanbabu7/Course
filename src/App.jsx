@@ -19,7 +19,7 @@ export default function App() {
 
           <div className="relative text-center px-8 max-w-4xl">
             <h1 className="2xl:text-7xl text-5xl font-bold tracking-tight leading-[120%]">
-              Unlock Your Potential with IoT and Embedded system workshop
+              Unlock Your Potential with IoT and Embedded system Traning Program
             </h1>
             <p className="mt-4 text-lg max-w-2xl mx-auto">
               Enhance your skills with expertly designed course from GCEK. Start your journey today!
@@ -46,7 +46,7 @@ export default function App() {
             <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
             <div className="text-center px-8 z-50">
               <h1 className="2xl:text-7xl text-5xl font-semibold tracking-tight leading-[120%]">
-                Enroll in  IoT and Embedded system workshop
+                Enroll in  IoT and Embedded system Programe 
               </h1>
               <p className="mt-4 text-lg max-w-2xl mx-auto">
                 Join our specialized courses offered by GCEK and enhance your knowledge 

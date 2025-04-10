@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import FormData from "form-data"; // form-data v4.0.1
-import Mailgun from "mailgun.js"; // mailgun.js v11.1.0
 import axios from "axios"; // axios v0.21.1
 
 const Form = () => {
@@ -20,49 +18,6 @@ const Form = () => {
     }));
   };
 
-  async function validateEmail(email) {
-    const apiKey = "d585e145a1ac0c609bd2177b23a9168f-3af52e3b-cfcba6fb"; // Replace with your Mailgun API key
-    const url = `https://api.mailgun.net/v4/address/validate?address=${email}`;
-
-    try {
-      const response = await axios.get(url, {
-        auth: {
-          username: "api",
-          password: apiKey,
-        },
-      });
-      return response.data.is_valid;
-    } catch (error) {
-      console.error("Error validating email:", error);
-      return false;
-    }
-  }
-
-  async function sendSimpleMessage(userEmail, userName) {
-    const mailgun = new Mailgun(FormData);
-    const mg = mailgun.client({
-      username: "api",
-      key: "d585e145a1ac0c609bd2177b23a9168f-3af52e3b-cfcba6fb",
-    });
-
-    try {
-      const data = await mg.messages.create(
-        "sandbox73a6e97a44aa40a0b4e6704e9f767b91.mailgun.org",
-        {
-          from: "Mailgun Sandbox <postmaster@sandbox73a6e97a44aa40a0b4e6704e9f767b91.mailgun.org>",
-          to: userEmail, // Send email to the entered user email
-          subject: `Hello ${userName}`,
-          text: `Hi ${userName},\n\nThank you for registering for the course! We will get back to you soon.\n\nBest Regards,\nCourse Team`,
-        }
-      );
-
-      console.log("Email Sent:", data);
-      return data;
-    } catch (error) {
-      console.log("Error sending email:", error);
-    }
-  }
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -71,25 +26,40 @@ const Form = () => {
       return;
     }
 
-    const isEmailValid = await validateEmail(formData.email);
-    if (!isEmailValid) {
-      toast.error("Invalid email address!", { position: "top-left" });
-      return;
-    }
-
-    toast.success("Form submitted successfully!", { position: "top-left" });
-
     try {
-      await sendSimpleMessage(formData.email, formData.name);
-    } catch (error) {
-      console.error("Error sending email:", error);
-    }
+      // Sheety API integration
+      const url = 'https://api.sheety.co/b527f4b56a4193701d91e4f20980f0cb/iotCourceReg/sheet1';
+      const body = {
+        sheet1: {
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email
+        }
+      };
 
-    setFormData({
-      name: "",
-      phone: "",
-      email: "",
-    });
+      const response = await fetch(url, {
+        method: 'POST', 
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body)
+      });
+      
+      const json = await response.json();
+      console.log("Form submitted:", json.sheet1);
+      
+      toast.success("Form submitted successfully!", { position: "top-left" });
+      
+      // Reset form after successful submission
+      setFormData({
+        name: "",
+        phone: "",
+        email: "",
+      });
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast.error("Failed to submit form. Please try again.", { position: "top-left" });
+    }
   };
 
   return (
