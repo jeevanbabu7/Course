@@ -1,5 +1,6 @@
 
 import './App.css'
+import './toast-fix.css'
 import { ReactLenis } from 'lenis/react';
 import Form from './pages/Form';
 import SyllabusCard from './components/SyllabusCard';
@@ -72,14 +73,14 @@ export default function App() {
                   <div>
                     <h3 className="text-sm uppercase tracking-wider text-blue-300">Course Schedule</h3>
                     <p className="text-xl font-semibold">
-                      <span className="bg-yellow-500/30 px-2 py-0.5 rounded">April/May</span>
-                      <span className="ml-2 text-green-400">(Hybrid Mode)</span>
+                      <span className="bg-yellow-500/30 px-2 py-0.5 rounded">May</span>
+                      <span className="ml-2 ">(Hybrid Mode)</span>
                     </p>
                   </div>
 
                   <div>
                     <h3 className="text-sm uppercase tracking-wider text-blue-300">Registration Deadline</h3>
-                    <p className="text-xl font-bold text-red-400">20th April 2025</p>
+                    <p className="text-xl font-bold ">30th April 2025</p>
                   </div>
                 </div>
 
@@ -173,7 +174,7 @@ export default function App() {
                 with expert-led curriculum. Register now to secure your spot!
               </p>
               <p className="mt-2 text-xl font-bold text-yellow-400">
-                Registration ends on 20th April 2025
+                Registration ends on 30th April 2025
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <a

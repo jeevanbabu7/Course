@@ -70,14 +70,14 @@ const Form = () => {
         </h2>
         <div className="text-center mb-2">
           <span className="bg-yellow-500/30 text-slate-800 font-semibold px-4 py-1 rounded-lg inline-block">
-            April/May (Hybrid Mode)
+            May (Hybrid Mode)
           </span>
         </div>
         <p className="text-gray-400 text-lg mb-4">
           Enroll now and start your learning journey!
         </p>
         <p className="text-red-600 font-medium mb-6">
-          Registration ends on 20th April 2025
+          Registration ends on 30th April 2025
         </p>
 
         <form
@@ -133,8 +133,9 @@ const Form = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        style={{ zIndex: 9999 }}
-        toastStyle={{ zIndex: 9999 }}
+        style={{ zIndex: 99999 }}
+        toastClassName="custom-toast"
+        bodyClassName="custom-toast-body"
       />
     </div>
   );
