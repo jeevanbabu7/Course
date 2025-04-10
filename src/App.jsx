@@ -2,6 +2,47 @@
 import './App.css'
 import { ReactLenis } from 'lenis/react';
 import Form from './pages/Form';
+import SyllabusCard from './components/SyllabusCard';
+// Syllabus data for the dropdown cards
+const syllabusData = [
+  {
+    moduleNumber: 1,
+    title: "Sensor/Actuator Integration",
+    content: "Learn about digital and analog I/O sensors, PWM, DC motors, servo motors, and communication protocols like I2C, SPI, and UART sensors.",
+    projects: [
+      "IoT AC Energy Meter with ESP32 & HMI Display",
+      "ESP32 control 4-channel relay module with IR"
+    ]
+  },
+  {
+    moduleNumber: 2,
+    title: "Communication Protocols",
+    content: "Explore various communication protocols including Zigbee, Bluetooth, LoRaWAN, WiFi, HTTP, MQTT, web server, and cloud computing.",
+    projects: [
+      "AD8495 K-Type Thermocouple ESP32 Web Server",
+      "ESP32 as access point and server"
+    ]
+  },
+  {
+    moduleNumber: 3,
+    title: "App-Based Projects",
+    content: "Develop mobile applications using platforms like Blynk, MIT App Inventor, and QI Creator.",
+    projects: [
+      "Mobile app for IR based robot",
+      "Mobile app for Home automation"
+    ]
+  },
+  {
+    moduleNumber: 4,
+    title: "Robotic & Autonomous Vehicle Projects",
+    content: "Build advanced robotic and autonomous vehicle projects incorporating machine learning and AI.",
+    projects: [
+      "Autonomous vehicle with ML and AI",
+      "Surveillance car"
+    ]
+  }
+];
+
 export default function App() {
   return (
     <ReactLenis root>
@@ -72,9 +113,43 @@ export default function App() {
           </div>
         </section>
 
+        <section id="syllabus" className="text-white min-h-screen w-full bg-slate-950 grid place-content-center sticky top-0 relative py-20 px-4">
+          <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+          <div className="absolute inset-0 bg-black/50"></div> {/* Overlay for better text visibility */}
+          <div className="max-w-4xl mx-auto relative z-10">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-white mb-4">Course Syllabus</h2>
+              <p className="text-gray-300 max-w-2xl mx-auto">
+                Our comprehensive IoT and Embedded Systems curriculum is designed to provide you with hands-on experience and practical skills through four specialized modules.
+              </p>
+            </div>
 
+            <div className="space-y-6">
+              {syllabusData.map((module) => (
+                <SyllabusCard
+                  key={module.moduleNumber}
+                  moduleNumber={module.moduleNumber}
+                  title={module.title}
+                  content={module.content}
+                  projects={module.projects}
+                />
+              ))}
+            </div>
 
-          <section id="registration" className="bg-gray-300 text-black grid place-content-center h-screen sticky top-0 rounded-tr-2xl rounded-tl-2xl overflow-hidden w-full">
+            <div className="mt-12 text-center">
+              <a
+                href="https://drive.google.com/file/d/112WrCukPRbl3_zwXTTJF2OIJ5IUcIoOo/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg shadow-md border border-blue-500/30"
+              >
+                Download Complete Syllabus
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section id="registration" className="bg-gray-300 text-black grid place-content-center h-screen sticky top-0 rounded-tr-2xl rounded-tl-2xl overflow-hidden w-full">
             <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
             {/* <h1 className="2xl:text-7xl text-4xl px-8 font-semibold text-center tracking-tight leading-[120%]">
               If you don't like this then I'm sorry, <br /> create your own and
@@ -108,7 +183,7 @@ export default function App() {
                 >
                   Download Syllabus
                 </a>
-                <a
+                {/* <a
                   href="#registration"
                   className="mt-6 inline-block bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
                   onClick={(e) => {
@@ -120,7 +195,7 @@ export default function App() {
                   }}
                 >
                   Register Now
-                </a>
+                </a> */}
               </div>
             </div>
             <div className="pt-10 mt-10 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 max-w-2xl mx-auto shadow-xl z-50 relative">
@@ -136,7 +211,7 @@ export default function App() {
                     <div>
                       <p className="text-xs text-gray-400 uppercase tracking-wider">Phone</p>
                       <a href="tel:+919876543210" className="text-green-300 group-hover:text-green-400 font-medium transition-colors">
-                        +91 98765 43210
+                        +91 9747350188
                       </a>
                     </div>
                   </div>

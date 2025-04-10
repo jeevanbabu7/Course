@@ -1,26 +1,37 @@
-import React from 'react'
-import { Outlet } from 'react-router'
+import React, { useEffect, useState } from 'react'
+import { Outlet, useLocation, Link } from 'react-router-dom'
 import '../navbar.css'
 const Navbar = () => {
+  const location = useLocation();
+  const [currentPath, setCurrentPath] = useState('/');
+
+  // Update current path when location changes
+  useEffect(() => {
+    setCurrentPath(location.pathname);
+  }, [location]);
   // Function to handle scroll and update active link
   React.useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const homeLink = document.querySelector('a[href="#"]');
+      const syllabusLink = document.querySelector('a[href="#syllabus"]');
       const registerLink = document.querySelector('a[href="#registration"]');
       const contactLink = document.querySelector('a[href="#contact"]');
 
       // Get section positions
+      const syllabusSection = document.getElementById('syllabus');
       const registrationSection = document.getElementById('registration');
       const contactSection = document.getElementById('contact');
 
-      if (!registrationSection || !contactSection) return;
+      if (!syllabusSection || !registrationSection || !contactSection) return;
 
+      const syllabusPosition = syllabusSection.offsetTop - 100;
       const registrationPosition = registrationSection.offsetTop - 100;
       const contactPosition = contactSection.offsetTop - 100;
 
       // Remove all active classes
       homeLink?.classList.remove('active');
+      syllabusLink?.classList.remove('active');
       registerLink?.classList.remove('active');
       contactLink?.classList.remove('active');
 
@@ -29,6 +40,8 @@ const Navbar = () => {
         contactLink?.classList.add('active');
       } else if (scrollPosition >= registrationPosition) {
         registerLink?.classList.add('active');
+      } else if (scrollPosition >= syllabusPosition) {
+        syllabusLink?.classList.add('active');
       } else {
         homeLink?.classList.add('active');
       }
@@ -85,17 +98,25 @@ const Navbar = () => {
                     <ul className="mobile-menu flex flex-col md:flex-row md:space-x-8 font-medium space-y-2 md:space-y-0">
                         {/* Home Link */}
                         <li>
+                            <Link
+                              to="/"
+                              className={`nav-link block py-2 px-3 text-white hover:text-blue-300 md:p-0 transition-colors ${currentPath === '/' ? 'active' : ''}`}
+                            >Home</Link>
+                        </li>
+
+                        {/* Syllabus Link */}
+                        <li>
                             <a
-                              href="#"
+                              href="#syllabus"
                               className="nav-link block py-2 px-3 text-white hover:text-blue-300 md:p-0 transition-colors"
                               onClick={(e) => {
                                 e.preventDefault();
-                                window.scrollTo({
-                                  top: 0,
-                                  behavior: 'smooth'
+                                document.getElementById('syllabus').scrollIntoView({
+                                  behavior: 'smooth',
+                                  block: 'start'
                                 });
                               }}
-                            >Home</a>
+                            >Syllabus</a>
                         </li>
 
                         {/* Register Link */}
