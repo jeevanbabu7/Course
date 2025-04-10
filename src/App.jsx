@@ -1,5 +1,6 @@
 
 import './App.css'
+import './toast-fix.css'
 import { ReactLenis } from 'lenis/react';
 import Form from './pages/Form';
 import SyllabusCard from './components/SyllabusCard';

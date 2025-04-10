@@ -133,8 +133,9 @@ const Form = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        style={{ zIndex: 9999 }}
-        toastStyle={{ zIndex: 9999 }}
+        style={{ zIndex: 99999 }}
+        toastClassName="custom-toast"
+        bodyClassName="custom-toast-body"
       />
     </div>
   );
