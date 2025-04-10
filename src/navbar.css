@@ -1,0 +1,34 @@
+/* Custom navbar styling */
+.nav-link {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+/* Active link styling */
+.nav-link.active {
+  color: #93c5fd !important; /* text-blue-300 */
+  font-weight: 600;
+}
+
+/* Only apply background to mobile menu */
+@media (max-width: 768px) {
+  .mobile-menu {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+}
+
+/* Desktop menu should be transparent */
+@media (min-width: 769px) {
+  .mobile-menu {
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin-top: 0 !important;
+  }
+}

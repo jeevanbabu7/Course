@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import axios from "axios"; // axios v0.21.1
+import "../toast-fix.css"; // Custom CSS to fix toast z-index issues
 
 const Form = () => {
   const [formData, setFormData] = useState({
@@ -22,7 +22,7 @@ const Form = () => {
     e.preventDefault();
 
     if (!formData.name || !formData.phone || !formData.email) {
-      toast.error("All fields are required!", { position: "top-left" });
+      toast.error("All fields are required!", { position: "top-center" });
       return;
     }
 
@@ -38,18 +38,18 @@ const Form = () => {
       };
 
       const response = await fetch(url, {
-        method: 'POST', 
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(body)
       });
-      
+
       const json = await response.json();
       console.log("Form submitted:", json.sheet1);
-      
-      toast.success("Form submitted successfully!", { position: "top-left" });
-      
+
+      toast.success("Form submitted successfully!", { position: "top-center" });
+
       // Reset form after successful submission
       setFormData({
         name: "",
@@ -58,23 +58,31 @@ const Form = () => {
       });
     } catch (error) {
       console.error("Error submitting form:", error);
-      toast.error("Failed to submit form. Please try again.", { position: "top-left" });
+      toast.error("Failed to submit form. Please try again.", { position: "top-center" });
     }
   };
 
   return (
-    <div className="flex flex-col items-center h-screen mt-16 w-full z-50">
+    <div className="flex flex-col items-center h-screen mt-16 w-full z-10">
       <div className="w-full py-6 flex flex-col items-center">
-        <h2 className="text-3xl font-bold text-slate-800 mb-4">
+        <h2 className="text-3xl font-bold text-slate-800 mb-2">
           Course Registration
         </h2>
-        <p className="text-gray-400 text-lg mb-6">
+        <div className="text-center mb-2">
+          <span className="bg-yellow-500/30 text-slate-800 font-semibold px-4 py-1 rounded-lg inline-block">
+            April/May (Hybrid Mode)
+          </span>
+        </div>
+        <p className="text-gray-400 text-lg mb-4">
           Enroll now and start your learning journey!
+        </p>
+        <p className="text-red-600 font-medium mb-6">
+          Registration ends on 20th April 2025
         </p>
 
         <form
           onSubmit={handleSubmit}
-          className="w-full max-w-lg bg-gray-900 p-6 rounded-lg shadow-lg space-y-4"
+          className="w-full max-w-lg bg-gray-900/90 backdrop-blur-md border border-gray-700/50 p-8 rounded-xl shadow-xl space-y-5"
         >
           <input
             onChange={handleChange}
@@ -115,7 +123,19 @@ const Form = () => {
           </button>
         </form>
       </div>
-      <ToastContainer />
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        style={{ zIndex: 9999 }}
+        toastStyle={{ zIndex: 9999 }}
+      />
     </div>
   );
 };
