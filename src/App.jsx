@@ -4,6 +4,7 @@ import './toast-fix.css'
 import { ReactLenis } from 'lenis/react';
 import Form from './pages/Form';
 import SyllabusCard from './components/SyllabusCard';
+import Navbar from './components/Navbar';
 // Syllabus data for the dropdown cards
 const syllabusData = [
   {
@@ -47,9 +48,10 @@ const syllabusData = [
 export default function App() {
   return (
     <ReactLenis root>
+      <Navbar />
       <main>
         <article>
-        <section className="text-white h-screen w-full bg-slate-950 grid place-content-center sticky top-0 relative">
+        <section className="text-white h-screen w-full bg-slate-950 grid place-content-center sticky top-0 pt-16">
           <div
             className="absolute inset-0 bg-cover bg-center w-full h-full opacity-50"
             style={{ backgroundImage: "url('/hero.jpg')" }} // Replace with actual image path
@@ -60,16 +62,16 @@ export default function App() {
           <div className="absolute inset-0 bg-black/50"></div> {/* Overlay for better text visibility */}
 
           <div className="relative text-center px-8 max-w-4xl">
-            <h1 className="2xl:text-5xl text-3xl font-bold tracking-tight leading-[120%]">
+            <h1 className="2xl:text-7xl text-5xl font-bold tracking-tight leading-[120%]">
               Unlock Your Potential with IoT and Embedded System Training Program
             </h1>
             <p className="mt-4 text-lg max-w-2xl mx-auto">
-              Enhance your skills with expertly designed course from GCEK. Start your journey today! <br />
+              Enhance your skills with expertly designed course from GCEK. Start your journey today!
             </p>
             {/* Course Details Box */}
-            <div className="mt-8 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-8 max-w-3xl mx-auto shadow-xl">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-                <div className="space-y-3 border-b md:border-b-0 md:border-r border-white/20 pb-4 md:pb-0 md:pr-6">
+            <div className="mt-8 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 max-w-2xl mx-auto  shadow-xl">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+                <div className="space-y-3 border-b md:border-b-0 md:border-r border-white/20 pb-4 md:pb-0 md:pr-4">
                   <div>
                     <h3 className="text-sm uppercase tracking-wider text-blue-300">Course Schedule</h3>
                     <p className="text-xl font-semibold">
@@ -84,11 +86,11 @@ export default function App() {
                   </div>
                   <div>
                     <h3 className="text-sm uppercase tracking-wider text-blue-300">Who Can Apply</h3>
-                    <p className="text-xl font-semibold">Anybody interested in Electronics and Programming can apply</p>
+                    <p className="text-xl font-semibold">Anybody intrested in Electronics and Programming can apply</p>
                   </div>
                 </div>
 
-                <div className="space-y-3 pt-4 md:pt-0 md:pl-6">
+                <div className="space-y-3 pt-4 md:pt-0 md:pl-4">
                   <div>
                     <h3 className="text-sm uppercase tracking-wider text-blue-300">Course Fee</h3>
                     <p className="text-xl font-bold">₹5000 + GST</p>
@@ -118,7 +120,7 @@ export default function App() {
           </div>
         </section>
 
-        <section id="syllabus" className="text-white min-h-screen w-full bg-slate-950 grid place-content-center sticky top-0 relative py-20 px-4">
+        <section id="syllabus" className="text-white min-h-screen w-full bg-slate-950 grid place-content-center sticky top-0 py-20 px-4">
           <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
           <div className="absolute inset-0 bg-black/50"></div> {/* Overlay for better text visibility */}
           <div className="max-w-4xl mx-auto relative z-10">
@@ -165,7 +167,7 @@ export default function App() {
           <section id="contact" className="text-white h-screen w-full bg-slate-950 grid place-content-center sticky top-0">
             <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
             <div className="text-center px-8 z-10">
-              <h1 className="2xl:text-5xl text-3xl font-semibold tracking-tight leading-[120%]">
+              <h1 className="2xl:text-7xl text-5xl font-semibold tracking-tight leading-[120%]">
                 Enroll in IoT and Embedded System Program
               </h1>
               <div className="mt-4 mb-2">
@@ -207,19 +209,19 @@ export default function App() {
                 <h2 className="text-2xl font-bold text-white mb-6 text-center">Contact Us</h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                  <div className="flex items-center p-4 bg-gray-800/50 rounded-lg border border-gray-700 transition-all hover:bg-gray-700/50 hover:border-green-500/50 group col-span-1 md:col-span-2">
-                    <div className="bg-green-500/20 p-2 rounded-full mr-3">
+                  {/* <div className="flex items-center p-4 bg-gray-800/50 rounded-lg border border-gray-700 transition-all hover:bg-gray-700/50 hover:border-green-500/50 group col-span-1 md:col-span-2"> */}
+                    {/* <div className="bg-green-500/20 p-2 rounded-full mr-3">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                       </svg>
-                    </div>
-                    <div>
-                      <p className="text-xs text-gray-400 uppercase tracking-wider">Phone</p>
-                      <a href="tel:+919876543210" className="text-green-300 group-hover:text-green-400 font-medium transition-colors">
+                    </div> */}
+                    {/* <div> */}
+                      {/* <p className="text-xs text-gray-400 uppercase tracking-wider">Phone</p> */}
+                      {/* <a href="tel:+919876543210" className="text-green-300 group-hover:text-green-400 font-medium transition-colors">
                         +91 9747350188
-                      </a>
-                    </div>
-                  </div>
+                      </a> */}
+                    {/* </div> */}
+                  {/* </div> */}
                   <div className="flex items-center p-4 bg-gray-800/50 rounded-lg border border-gray-700 transition-all hover:bg-gray-700/50 hover:border-blue-500/50 group">
                     <div className="bg-blue-500/20 p-2 rounded-full mr-3">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
