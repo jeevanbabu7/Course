@@ -150,7 +150,7 @@ const Navbar = () => {
                         </li>
 
                         {/* GitHub Link */}
-                        <li>
+                        {/* <li>
                             <a
                               href="https://github.com/aruncs31s/iot_and_embedded_system_training_program_gcek"
                               target="_blank"
@@ -162,7 +162,7 @@ const Navbar = () => {
                               </svg>
                               GitHub
                             </a>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
             </div>
