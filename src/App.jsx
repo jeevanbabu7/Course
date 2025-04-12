@@ -86,7 +86,7 @@ export default function App() {
                   </div>
                   <div>
                     <h3 className="text-sm uppercase tracking-wider text-blue-300">Who Can Apply</h3>
-                    <p className="text-xl font-semibold">Anybody intrested in Electronics and Programming can apply</p>
+                    <p className="text-xl font-semibold">Anybody interested in Electronics and Programming can apply</p>
                   </div>
                 </div>
 
